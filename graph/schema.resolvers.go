@@ -23,8 +23,6 @@ func (r *mutationResolver) CreateTodo(ctx context.Context, input model.NewTodo) 
 	}
 	r.todos = append(r.todos, todo)
 
-	fmt.Printf("%+v\n", r.TodoSubscribers)
-
 	// notify subscribers
 	r.mu.Lock()
 	for _, subscriber := range r.TodoSubscribers {
